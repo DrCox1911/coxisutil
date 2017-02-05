@@ -48,3 +48,47 @@ CoxisUtil.readINI = function(_modID, _filename)
 	-- end
 	return inidata;
 end
+
+CoxisUtil.printDebug = function(_module, _string)
+	if _module ~= nil and _string ~= nil then
+		print("..." .. tostring(_module) .. "..." .. tostring(_string));
+	elseif _module == nil and _string ~= nil then
+		print("...NO MODULE RECEIVED..." .. tostring(_string));
+	else
+		print("...ERROR IN DEBUG...");
+	end
+end
+
+
+---
+-- Shows a modal window that informs the player about something and only has
+-- an okay button to be closed.
+--
+-- @param _text - The text to display on the modal
+-- @param _centered - If set to true the modal will be centered (optional)
+-- @param _width - The width of the window (optional)
+-- @param _height - The height of the window (optional)
+-- @param _func - The function that should be called when the button is clicked
+--
+-- @author RoboMat (I only added the function param)
+--
+CoxisUtil.okModal = function(_text, _centered, _width, _height, _posX, _posY, _func)
+    local posX = _posX or 0;
+    local posY = _posY or 0;
+    local width = _width or 230;
+    local height = _height or 120;
+    local centered = _centered;
+    local txt = _text;
+	local func = _func or nil;
+    local core = getCore();
+
+    -- center the modal if necessary
+    if centered then
+        posX = core:getScreenWidth() * 0.5 - width * 0.5;
+        posY = core:getScreenHeight() * 0.5 - height * 0.5;
+    end
+
+    local modal = ISModalDialog:new(posX, posY, width, height, txt, false, nil, func);
+    modal:initialise();
+    modal:addToUIManager();
+end
