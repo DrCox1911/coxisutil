@@ -2,7 +2,7 @@
 #########################################################################################################
 #	@mod:		CoxisUtil - Basci utilities for Coxis mods                                              #
 #	@author: 	Dr_Cox1911					                                                            #
-#	@notes:		Many thanks to RJ´s LastStand code and all the other modders out there					#
+#	@notes:		Many thanks to RJï¿½s LastStand code and all the other modders out there					#
 #	@notes:													                                  			#
 #	@link: 													       										#
 #########################################################################################################
@@ -38,15 +38,30 @@ CoxisUtil.readINI = function(_modID, _filename)
 			inidata[section][key] = value;
 		end
 	end
-	
+
 	-- DEBUG, uncomment here to see the loaded ini data
-	-- for k,v in pairs(CoxisShopServer.settings) do 
+	-- for k,v in pairs(CoxisShopServer.settings) do
 			-- print("Section " .. tostring(k));
 			-- for key, value in pairs(v) do
 				-- print("Key: " .. tostring(key) .. " value " .. tostring(value));
 			-- end
 	-- end
 	return inidata;
+end
+
+CoxisUtil.readTXT = function(_modID, _filename)
+	local settingsFile = getModFileReader(_modID, _filename, true);
+	local line = nil;
+	local txt = "";
+		while true do
+		line = settingsFile:readLine();
+		if line == nil then
+			settingsFile:close();
+			break;
+		end
+		txt = txt .. tostring(line);
+	end
+	return txt;
 end
 
 CoxisUtil.printDebug = function(_module, _string)
