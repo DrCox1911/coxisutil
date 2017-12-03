@@ -10,6 +10,9 @@
 
 # Changelog
 
+### Version 1.2.0
+  - added function to read in normal txt-files
+
 ### Version 1.1.0
   - printDebug function that automaticly formats the console output properly
   - slightly altered okModal originaly written by RoboMat, only change is the _func parameter
