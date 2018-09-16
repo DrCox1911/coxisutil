@@ -10,6 +10,16 @@
 
 # Changelog
 
+### Version 1.5.0
+  - added function to write a normal txt-file
+  - added documentation for all Functions
+
+### Version 1.4.0
+  - added function to write a ini-formatted table to a file inside a mod
+
+### Version 1.3.0
+  - added function to check a table for a specific key
+
 ### Version 1.2.0
   - added function to read in normal txt-files
 
